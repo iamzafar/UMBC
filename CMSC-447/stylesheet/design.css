@@ -1,9 +1,11 @@
-body{
-	/*background-color: yellow;*/
-}
-
 .sign{
 	text-align: center;
 	font-family: 'Gloria Hallelujah', cursive;
 	font-size: 64px;
+}
+
+#barterimage{
+	background-image: url('barter.jpg') 50px 50px;
+	background-repeat:no-repeat;
+		
 }
