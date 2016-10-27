@@ -5,7 +5,11 @@
 }
 
 #barterimage{
-	background-image: url('barter.jpg') 50px 50px;
+	background-image: url('barter.jpg');
 	background-repeat:no-repeat;
 		
+}
+
+.container{
+	margin-top: 50px;
 }
