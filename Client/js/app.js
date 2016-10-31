@@ -23,5 +23,10 @@ var myApp = angular.module('DrakeWeb', ['ui.router', 'ngResource']).config(
 			url:'/',
 			templateUrl: '/UMBC/Client/login.html',
 			controller: 'LoginCtrl'
+		}).
+		state('service', {
+			url:'/service',
+			templateUrl: '/UMBC/Client/service.html',
+			controller: 'ServiceCtrl'
 		});
 });
