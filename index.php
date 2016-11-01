@@ -18,7 +18,7 @@
 	<!-- main css file -->
 	<link rel="stylesheet" type="text/css" href="/UMBC/Client/css/design.css">
 
-	<!-- google font, zarfar -->
+	<!-- google font, zafar -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Arimo|Merriweather:400,700|Poppins:400,600|Ubuntu:400,700" rel="stylesheet">
