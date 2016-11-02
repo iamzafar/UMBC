@@ -11,7 +11,7 @@ var myApp = angular.module('DrakeWeb', ['ui.router', 'ngResource']).config(
 		}).
 		state('signup', {
 			url: '/signup',
-			templateUrl: '/UMBC/Client/signup.html',
+			templateUrl: '/UMBC/Client/register.html',
 			controller: 'SignUpCtrl'
 		}).
 		state('profile', {
@@ -21,12 +21,12 @@ var myApp = angular.module('DrakeWeb', ['ui.router', 'ngResource']).config(
 		}).
 		state('login', {
 			url:'/',
-			templateUrl: '/UMBC/Client/login.html',
+			templateUrl: '/UMBC/Client/signup.html',
 			controller: 'LoginCtrl'
 		}).
 		state('service', {
 			url:'/service',
 			templateUrl: '/UMBC/Client/service.html',
-			controller: 'ServiceCtrl'
+			controller: 'AboutMeCtrl'		
 		});
 });
