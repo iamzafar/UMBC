@@ -23,6 +23,11 @@ body {
 	font-size: 18px;
 }
 
+span.glyphicon-log-out {
+	margin-top: 10px;
+    font-size: 2.2em;
+}
+
 
 /* Zarfar part css */
 .sign{

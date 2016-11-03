@@ -32,7 +32,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
 
 
-
     <!-- self js files, controllers -->
     <script src="/UMBC/Client/js/app.js"></script>
     <script src="/UMBC/Client/js/controller/SignUpCtrl.js"></script>
@@ -40,6 +39,7 @@
     <script src="/UMBC/Client/js/controller/profilectrl.js"></script>
     <script src="/UMBC/Client/js/controller/aboutmectrl.js"></script>
     <script src="/UMBC/Client/js/controller/loginctrl.js"></script>
+    <script src="/UMBC/Client/js/controller/indexctrl.js"></script>
 
 </head>
 <body>
@@ -60,10 +60,19 @@
 						<a ui-sref="profile"><h2>Profile</h2></a>
 					</div>
 
-					<div class='col-sm-2'>
-						<div class='row' id='index-login-link'>
+					<!-- uses indexctrl to check login part -->
+					<div class='col-sm-2' ng-controller="LoginCtrl">
+						<!-- ng-show is for toggle between login and logout icon -->
+						<div ng-show="!loggedIn" class='row' id='index-login-link'>
 							<a ui-sref="login"><strong>Login</strong></a>
 						</div>
+
+						<div ng-show="loggedIn" class='row' id='index-logout-link'>
+							<a id="logout" ng-click="userLogout()"> 
+								<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+							</a>
+						</div>
+
 					</div>
 				</div>
 			</div> <!-- end of nav bar container -->

@@ -21,7 +21,11 @@ var myApp = angular.module('DrakeWeb', ['ui.router', 'ngResource']).config(
 		}).
 		state('login', {
 			url:'/',
-			templateUrl: '/UMBC/Client/signup.html',
+			templateUrl: '/UMBC/Client/signin.html',
+			params: { 
+		      'toState': 'home', // default state to proceed to after login
+		      'toParams': {}
+		    },
 			controller: 'LoginCtrl'
 		}).
 		state('service', {
