@@ -1,4 +1,4 @@
-myApp.controller('LoginCtrl', ['$scope', '$http', '$state', '$stateParams', function($scope, $http, $state, $stateParams) {
+myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window) {
 
 	/* login info from user */
 	$scope.userInfo = {
@@ -6,13 +6,11 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$state', '$stateParams', func
 		"password" : undefined
 	}
 
-	var checkStatus = function() {
-		if(localStorage["user"]) {
-			$scope.loggedIn = true;
-		} else {
-			$scope.loggedIn = false;
-		}
-	}
+	if(localStorage['user']) {
+    	$scope.loggedIn = true;
+    } else {
+    	$scope.loggedIn = false;
+    }
 
 	/* user loggin function */
 	$scope.userLogin = function() {
@@ -23,12 +21,14 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$state', '$stateParams', func
 		}
 
 		/* send data to end points php file*/
-		$http.post("ServerFile/login.php", userData).success(function(res) {
+		$http.post("ServerFiles/login.php", userData).success(function(res) {
 			console.log(res);
-			/* get user email or whatever is passed from end points, login icon will be changed to logged out */
-			localStorage.setItem("user", JSON.stringify({user: res}));
 
-			//$state.go($state.home, {}, {reload: true});
+			/* get user email or whatever is passed from end points, login icon will be changed to logged out !!!!!!!!!!!!!!!*/
+			localStorage.setItem("user", JSON.stringify({user: res}));
+			$scope.loggedIn = true;
+			$location.path('/home');
+			$window.location.reload();
 
 		}).error(function(error) {
 			console.error(error);
@@ -40,8 +40,9 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$state', '$stateParams', func
 	$scope.userLogout = function() {
 		console.log("logout func is called");
 		localStorage.clear();
-		checkStatus();
+		
+		$location.path('/login');
+		$scope.loggedIn = false;
 	}
 
-	checkStatus();
 }]);

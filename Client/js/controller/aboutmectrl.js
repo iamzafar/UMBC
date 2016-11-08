@@ -1,4 +1,4 @@
-myApp.controller('AboutMeCtrl', ['$scope', '$http', '$state', function($scope, $http, $state) {
+myApp.controller('AboutMeCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.message = "Hover over to know about me";
 	$scope.showMsg = function() {
 		console.log("hello");

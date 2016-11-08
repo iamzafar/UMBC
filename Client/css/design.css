@@ -11,7 +11,7 @@ body {
 	color: #ffffff;
 }
 
-#signup-input-1, #login, #login-btn, #login-cancel, #signup-link {
+#signup-input-1, #login, #login-btn, #login-cancel, #signup-link, #self-image, #add-container {
 	margin-top: 20px;
 }
 
@@ -26,6 +26,16 @@ body {
 span.glyphicon-log-out {
 	margin-top: 10px;
     font-size: 2.2em;
+}
+
+#login {
+	float: right;
+	margin-top: 10px;
+	font-size: 18px;
+}
+
+#self-image {
+
 }
 
 

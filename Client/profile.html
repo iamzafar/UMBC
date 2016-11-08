@@ -1,19 +1,21 @@
 <div class='' id='aboutme'>
 	<div class='row' id='self-info' ng-controller='AboutMeCtrl'>
-		<div class='container'>{{message}}</div>
 
-		<div class='col-sm-4 self-image'>
-			<img src="/UMBC/Client/images/self_1.jpg" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
+		<div class='col-sm-4' id='self-image'>
+			<div>{{message}}</div>
+			<div class='self-image'>
+				<img src="/UMBC/Client/images/self_1.jpg" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
 
-			<div class="edit-profile">
-				<div class="btn btn-default">
-					Edit Profile
+				<div class="edit-profile">
+					<div class="btn btn-default">
+						Edit Profile
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<!-- biograhpy container -->
-		<div class='container'>
+		<div class='container'  id='add-container'>
 			<div class='col-sm-8' id='list-adds'>
 				<strong>My Services</strong>
 

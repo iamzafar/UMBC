@@ -1,3 +1,3 @@
-myApp.controller('ProfileCtrl', ['$scope', '$http', '$state', function($scope, $http, $state) {
+myApp.controller('ProfileCtrl', ['$scope', '$http', function($scope, $http) {
 	$scope.username = "Hello User";
 }]);
