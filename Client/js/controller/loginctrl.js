@@ -28,7 +28,7 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 			localStorage.setItem("user", JSON.stringify({user: res}));
 			$scope.loggedIn = true;
 			$location.path('/home');
-			$window.location.reload();
+			//$window.location.reload();
 
 		}).error(function(error) {
 			console.error(error);
