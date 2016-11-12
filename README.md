@@ -1,2 +1,0 @@
-# UMBC
-College related projects
