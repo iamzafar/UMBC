@@ -1,0 +1,4 @@
+- DB (set up a table)
+- Front end
+- Authentication (using gmail)
+- 
