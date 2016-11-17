@@ -21,7 +21,7 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 		}
 
 		/* send data to end points php file*/
-		$http.post("ServerFiles/login.php", userData).success(function(res) {
+		$http.post("ServerFiles/loginfiles/login.php", userData).success(function(res)) {
 			console.log(res);
 
 			/* get user email or whatever is passed from end points, login icon will be changed to logged out !!!!!!!!!!!!!!!*/
