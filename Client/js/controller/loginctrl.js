@@ -29,8 +29,8 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 			/* get user email or whatever is passed from end points, login icon will be changed to logged out !!!!!!!!!!!!!!!*/
 			localStorage.setItem("user", JSON.stringify({user: res}));
 			$scope.loggedIn = true;
-			$location.path('/home');
-			$window.location.reload();
+			//$location.path('/home');
+			//$window.location.reload();
 
 		}).error(function(error) {
 			console.error(error);
