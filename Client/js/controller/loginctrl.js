@@ -20,15 +20,17 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 			"password" : $scope.userInfo.password
 		}
 
-		/* send data to end points php file*/
-		$http.post("ServerFiles/loginfiles/login.php", userData).success(function(res)) {
+		/* send data to end points php file*/	
+
+		$http.post("ServerFiles/loginfiles/login.php", userData).success(function(res) {
+
 			console.log(res);
 
 			/* get user email or whatever is passed from end points, login icon will be changed to logged out !!!!!!!!!!!!!!!*/
 			localStorage.setItem("user", JSON.stringify({user: res}));
 			$scope.loggedIn = true;
 			$location.path('/home');
-			//$window.location.reload();
+			$window.location.reload();
 
 		}).error(function(error) {
 			console.error(error);
