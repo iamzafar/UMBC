@@ -1,14 +1,29 @@
 <?php
+	/*function escape( $db, $string ){
+		$newString = mysqli_real_escape_string( $db, htmlentities($string) );
+		return $newString;
+	}*/
+
 	function escape( $db, $string ){
 		$newString = mysqli_real_escape_string( $db, htmlentities($string) );
 		return $newString;
 	}
 
 	//check if email exist;
-	function emailExists( $email ){
+	/*function emailExists( $email ){
 		require '../config/connect_db.php';
 		if( $connect ){
 			$result = $db->query( "SELECT User_Id FROM users WHERE Email = '$email'" );
+			if( $result->num_rows ){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}*/
+	function emailExists($db, $connect, $email ){
+		if( $connect ){
+			$result = $db->query( "SELECT user_Id FROM user WHERE email = '$email'" );
 			if( $result->num_rows ){
 				return true;
 			}else{
