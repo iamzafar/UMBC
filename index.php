@@ -65,9 +65,15 @@
 						<a href="#service"><h2>Service</h2></a>
 					</div>
 
-					<div class='col-sm-4'>
+					<div class='col-sm-2'>
 						<a href="#profile"><h2>Profile</h2></a>
 					</div> 
+
+					<div class='col-sm-4'>
+						<div id="user_name" ng-model="first_name"> 
+							<h1>Welcome {{first_name}}</h1>
+						</div>
+					</div>
 
 					<!-- uses indexctrl to check login part -->
 					 <div class='col-sm-2'>
