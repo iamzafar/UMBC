@@ -2,17 +2,6 @@
     require("../../Config/connect_db.php");
 	require("../../Functions/phpfunctions.php");
 
-	/* need to include or require another php file to connect to database (is that connect_db.php?)*/
-	
-	//SUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDO
-	// Grab username and password from front end
-	// Search database for username
-	// if username NOT in database($isLogin = false)
-	// else
-		// dehash password??
-		// if password is NOT correct($isLogin = false)
-		// else ($isLogin = true)
-	//SUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDOSUDO
 	
 	/* if user passes the check and set this to true, now is set true to test */
 	$isLogin = false;
