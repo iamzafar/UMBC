@@ -43,12 +43,21 @@
  -->
 </head>
 <body>
-	<div class='container'>
+	
 		<nav class='navbar navbar-inverse navbar-fixed-top' role='navigation' id='nav-bar'>
 			<!-- nav bar content -->
 			<div class='container' ng-controller="LoginCtrl">
 				<div ng-show="loggedIn" class='row' id='nav-row'>
-					<div class='col-sm-2'>
+
+					
+		<div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#services">SERVISLAR</a></li>
+        <li><a href="#profile">PROFILE</a></li>         
+      </ul>
+    </div>
+					 <div class='col-sm-2'>
 						<a href ="#home"><h2>Home</h2></a>
 					</div>
 
@@ -56,16 +65,24 @@
 						<a href="#service"><h2>Service</h2></a>
 					</div>
 
-					<div class='col-sm-4'>
+					<div class='col-sm-2'>
 						<a href="#profile"><h2>Profile</h2></a>
+					</div> 
+
+					<div class='col-sm-4'>
+						<div id="user_name" ng-model="first_name"> 
+							<h1>Welcome {{first_name}}</h1>
+						</div>
 					</div>
 
 					<!-- uses indexctrl to check login part -->
-					<div class='col-sm-2'>
+					 <div class='col-sm-2'>
 						<a id="logout" ng-click="userLogout()"> 
 							<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 						</a>
-					</div>
+					</div> 
+
+
 				</div> <!-- end of nav bar tab loggined content-->
 				
 				<div ng-show="!loggedIn" class='row' id='index'>
@@ -77,7 +94,7 @@
 
 			<!-- ng-show is for toggle between login and logout icon -->
 		</nav>
-	</div>
+	
 
 	<!-- main content -->
 	<div class="container" id="main-body">

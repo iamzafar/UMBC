@@ -34,6 +34,12 @@ span.glyphicon-log-out {
 	font-size: 18px;
 }
 
+div#user_name {
+	margin-top: 10px;
+	font-size: 18px;
+	color: #ffffff;
+}
+
 #self-image {
 
 }
