@@ -39,6 +39,7 @@
     <script src="/UMBC/Client/js/controller/profilectrl.js"></script>
     <script src="/UMBC/Client/js/controller/aboutmectrl.js"></script>
     <script src="/UMBC/Client/js/controller/loginctrl.js"></script>
+    <script src="/UMBC/Client/js/controller/servicectrl.js"></script>
 <!--     <script src="/UMBC/Client/js/controller/indexctrl.js"></script>
  -->
 </head>
@@ -50,37 +51,39 @@
 				<div ng-show="loggedIn" class='row' id='nav-row'>
 
 					
-		<div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#services">SERVISLAR</a></li>
-        <li><a href="#profile">PROFILE</a></li>         
-      </ul>
-    </div>
-					 <div class='col-sm-2'>
-						<a href ="#home"><h2>Home</h2></a>
+				<div class="collapse navbar-collapse" id="myNavbar">
+			      <ul class="nav navbar-nav navbar-right">
+			        <li><a href="#home">HOME</a></li>
+			        <li><a href="#services">SERVISLAR</a></li>
+			        <li><a href="#profile">PROFILE</a></li>         
+			      </ul>
+
+			    </div>
+
+				<div class='col-sm-2'>
+					<a href ="#home"><h2>Home</h2></a>
+				</div>
+
+				<div class='col-sm-2'>
+					<a href="#service"><h2>Service</h2></a>
+				</div>
+
+				<div class='col-sm-2'>
+					<a href="#profile"><h2>Profile</h2></a>
+				</div> 
+
+				<div class='col-sm-4'>
+					<div id="user_name" ng-model="first_name"> 
+						<h1>Welcome {{first_name}}</h1>
 					</div>
+				</div>
 
-					<div class='col-sm-2'>
-						<a href="#service"><h2>Service</h2></a>
-					</div>
-
-					<div class='col-sm-2'>
-						<a href="#profile"><h2>Profile</h2></a>
-					</div> 
-
-					<div class='col-sm-4'>
-						<div id="user_name" ng-model="first_name"> 
-							<h1>Welcome {{first_name}}</h1>
-						</div>
-					</div>
-
-					<!-- uses indexctrl to check login part -->
-					 <div class='col-sm-2'>
-						<a id="logout" ng-click="userLogout()"> 
-							<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-						</a>
-					</div> 
+				<!-- uses indexctrl to check login part -->
+				 <div class='col-sm-2'>
+					<a id="logout" ng-click="userLogout()"> 
+						<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+					</a>
+				</div> 
 
 
 				</div> <!-- end of nav bar tab loggined content-->
