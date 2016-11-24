@@ -34,7 +34,7 @@ myApp.controller('ServiceCtrl', ['$scope', '$http', '$location', '$window', func
 	}
 
 	// upload image
-	scope.upload_picture = function() {
+	$scope.upload_picture = function() {
 		console.log("upload is called");
 	}
 }]);
