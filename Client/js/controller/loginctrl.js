@@ -40,6 +40,7 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 		
 			$http.post("ServerFiles/loginfiles/login.php", userData).success(function(res) {
 				if(res['status'] === '1') {
+					
 					/* get user email or whatever is passed from end points, login icon will be changed to logged out !!!!!!!!!!!!!!!*/
 					localStorage.setItem('user', JSON.stringify({user: res}));
 					$scope.loggedIn = true;

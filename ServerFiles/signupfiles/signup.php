@@ -48,13 +48,13 @@
 			// if store the database failed
 			if(!$result->execute()) {
 				$result->close();
-				$userData = ["status" => "failt", "email" => "$email_hashed", "firstname" => $firstname, "password" => $password];
+				$userData = ["status" => "failt", "firstname" => $firstname];
 				echo json_encode($userData);
 			} else {
-				$userData = ["status" => "success", "email" => $email_hashed, "firstname" => $firstname, "password" => $password];
+				$userData = ["status" => "success", "firstname" => $firstname];
+				$result->close();
 				echo json_encode($userData);
 			}
 		}
 	}
-
 ?>
