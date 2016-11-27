@@ -12,6 +12,7 @@ myApp.controller('SignUpCtrl', ['$scope', '$http', '$location', '$window', funct
 	};
 
 	// signup function
+	// re_pwd
 	$scope.userSignup = function(event) {
 		var userInfo = {
 			"firstname" : $scope.userInfo.firstname,

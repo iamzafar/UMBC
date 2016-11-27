@@ -23,6 +23,7 @@
 		$emailEnd = emailEnd($email);
 
 		// use string before @ from email to be the hahsed key
+		// would suggest sha256 for this
 		$salt = md5($emailBegin);
 
 		// encrypt email, and clean up the '+, /' character
@@ -33,6 +34,7 @@
 		// first hash, using sha256
 		$password = hash('sha256', escape($db, $password));
 		// second using bcrypt
+		//would not use the PASSWORD_DEFAULT, would use self made salt
 		$password = password_hash($password, PASSWORD_DEFAULT);
 
 		// check if user has already existed
