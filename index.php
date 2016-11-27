@@ -20,7 +20,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<!-- main css file -->
 	<!-- ****************************************************************************************************** -->
-	<link rel="stylesheet" type="text/css" href="/test/Client/css/design.css"> 
+	<link rel="stylesheet" type="text/css" href="/UMBC/Client/css/design.css"> 
 	<!-- ****************************************************************************************************** -->
 	<!-- google font, zarfar -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
@@ -99,6 +99,7 @@
    						<li>
    							<a href="#">
    								<span id="user_name" ng-model="first_name">
+   								<!-- read user first name -->
    								Welcome {{first_name}}
    							</span>   
    							</a>   														
