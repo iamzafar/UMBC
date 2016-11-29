@@ -1,5 +1,6 @@
 <?php
-
+	require("../../Config/connect_db.php");
+	require("../../Functions/phpfunctions.php");
 	/* need to include or require another php file to connect to database */
 
 

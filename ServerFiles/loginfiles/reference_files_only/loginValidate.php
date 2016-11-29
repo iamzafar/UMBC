@@ -53,7 +53,7 @@
 		$tempPass = "";
 
 		//echo $userEmail . '<br>';
-		if( $result = $db->prepare( "SELECT User_Id, Password, Email FROM users WHERE Email = ?" ) ){
+		if( $result = $db->prepare( "SELECT User_Id, Password, Email FROM users WHERE Email = ?" )) {
 			$result->bind_param( "s", $userEmail );
 			$result->execute();
 			$result->bind_result($User_Id, $Password, $Email);
