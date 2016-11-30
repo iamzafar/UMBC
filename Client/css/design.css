@@ -44,6 +44,23 @@ div#user_name {
 
 }
 
+.my-jumbot {
+	padding-bottom: 10px;
+	padding-top: 10px;
+	padding: auto;
+	/*margin-bottom: 10px;*/
+	height: 200px;
+}
+
+.my-title h3, .my-title, .my-image {
+	margin-top: 20px;
+}
+
+.my-title {
+	margin-top: 0px;
+}
+
+
 
 /* Zarfar part css */
 .sign{

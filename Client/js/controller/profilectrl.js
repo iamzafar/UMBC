@@ -41,8 +41,12 @@ myApp.controller('ProfileCtrl', ['$scope', '$http',  function($scope, $http) {
 	$scope.username = "Hello User";
 	// user default image
 	var defaultPath = "userprofile/";
-	$scope.myimage = defaultPath + "default.jpg";
 
+	// add image default
+	$scope.myaddimage = defaultPath + "default.jpg";
+
+	// user profile image
+	$scope.myimage = defaultPath + "default.jpg";
 	var local = JSON.parse(localStorage['user']);
 
 	// for hover effect

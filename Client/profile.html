@@ -6,15 +6,13 @@
 			<div class='self-image' ng-model="myimage">
 				<img ng-src="/UMBC/ServerFiles/uploadimages/{{myimage}}" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
 
-				<div class="container">
-				<div class="edit-profile row">
+				<div class="edit-profile">
 					<div class="">
 						<input type="file" file-input="files" /> 
 					</div>
-					<div class="btn btn-info col-sm-5" ng-click="changeprofile()">
+					<div class="btn btn-info" ng-click="changeprofile()">
 						Upload Profile
 					</div>
-				</div>
 				</div>
 			</div>
 		</div>
@@ -26,14 +24,21 @@
 
 				<!-- list of adds if there is any -->
 				<ul>
-					
 					<li ng-repeat="add in my_adds">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								{{add.title}}
-							</div>
-							<div class="panel-body">
-								{{add.description}}
+						<div class="jumbotron my-jumbot">
+							<div class="row"><!-- for image and add description -->
+								<div class="my-image col-md-2" ng-model="myaddimage">
+									<img ng-src="/UMBC/ServerFiles/uploadimages/{{myaddimage}}" style="border:none; width: 80px; height: 80px;">
+								</div>
+								<div class="add-description col-md-9">
+									<div class="my-title">
+										<h3>{{add.title}}</h3>
+									</div>
+
+									<div class="my-add">
+										<strong>{{add.description}}</strong>
+									</div>
+								</div>
 							</div>
 						</div>
 					</li>
