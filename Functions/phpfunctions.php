@@ -54,6 +54,20 @@
 		return $rest;
 	}
 
+	// store image link
+	function storeImage($user_id, $imagename, $db) {
+		$result = $db->prepare("UPDATE user SET image_link = ? WHERE user_id = '$user_id'");
+		$result->bind_param("s", $filepath);
+
+		if($result->execute()) {
+			echo true;
+		} else {
+			echo false;
+		}
+
+		
+	}
+
 	//get before the @email.com;
 	function emailBegin( $email ){
 		$headEmail = strstr( $email, '@', true );

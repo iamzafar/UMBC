@@ -1,15 +1,20 @@
 <div class='' id='aboutme'>
-	<div class='row' id='self-info' ng-controller='AboutMeCtrl'>
+	<div class='row' id='self-info'>
 
 		<div class='col-sm-4' id='self-image'>
 			<div>{{message}}</div>
-			<div class='self-image'>
-				<img src="/UMBC/Client/images/userprofile/self_1.jpg" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
+			<div class='self-image' ng-model="myimage">
+				<img ng-src="/UMBC/ServerFiles/uploadimages/{{myimage}}" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
 
-				<div class="edit-profile">
-					<div class="btn btn-default" ng-click="changeprofile()">
-						Edit Profile
+				<div class="container">
+				<div class="edit-profile row">
+					<div class="">
+						<input type="file" file-input="files" /> 
 					</div>
+					<div class="btn btn-info col-sm-5" ng-click="changeprofile()">
+						Upload Profile
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>

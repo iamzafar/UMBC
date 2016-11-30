@@ -15,9 +15,8 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 	if($scope.loggedIn) {
 		var local = JSON.parse(localStorage['user']);
 		$scope.first_name = local['user']['first_name'];
-		console.log(local);
 	} else {
-		console.log("no");
+		console.log("no local user is set");
 	}
 
 	$scope.userInfo = {
@@ -44,13 +43,14 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 					/* get user email or whatever is passed from end points, login icon will be changed to logged out !!!!!!!!!!!!!!!*/
 					localStorage.setItem('user', JSON.stringify({user: res}));
 					$scope.loggedIn = true;
+					// route to home page
 					$location.path('/home');
 					
 					// jquery function
 					$(function(){
-					(function() {
-						$("#exampleInputPassword3").val("").placeholder("password");
-					});
+						(function() {
+							$("#exampleInputPassword3").val("").placeholder("password");
+						});
 					});
 				
 					$window.location.reload();
@@ -59,9 +59,9 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 					
 					// jquery function
 					$(function(){
-					(function() {
-						$("#exampleInputPassword3").val("").attr("placeholder", "Invalid password of user email");
-					}());
+						(function() {
+							$("#exampleInputPassword3").val("").attr("placeholder", "Invalid password of user email");
+						}());
 					});
 					
 				}
@@ -69,7 +69,6 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 			}).error(function(error) {
 				console.error(error);
 			});
-		
 	}
 
 	/* user logout function */

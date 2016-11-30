@@ -29,3 +29,4 @@ var myApp = angular.module('DrakeWeb', ['ngRoute', 'ngResource']).config(
 		$routeProvider.otherwise({redirectTo: '/login'});
 
 });
+
