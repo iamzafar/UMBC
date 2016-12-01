@@ -41,19 +41,31 @@ myApp.controller('ProfileCtrl', ['$scope', '$http', '$interval', '$window', func
 
 	//user id
 	var local = JSON.parse(localStorage['user']);
-	var user_id = local['user']['user_id'];
-	var user_image_link = local['user']['image_link'];
-	console.log(localStorage);
-
-	$scope.username = "Hello User";
 	// user default image
 	var defaultPath = "userprofile/";
+	var user_image_link;
+	var user_id = local['user']['user_id'];
 
+	console.log(local['user']['image_link']);
+
+	if(local != null) {
+		if(local['user']['image_link'] != null) {
+			user_image_link = local['user']['image_link'];
+		} else {
+			user_image_link = defaultPath + "default.jpg";
+		}
+	} else {
+		user_image_link = defaultPath + "default.jpg";
+	}
+
+	$scope.username = "Hello User";
+	
 	// add image default
 	$scope.myadimage = defaultPath + "default_ad.jpg";
+	console.log(user_image_link);
 
 	// user profile image
-	$scope.myimage = (user_image_link.length === 0) ? defaultPath + "default.jpg" : user_image_link;
+	$scope.myimage = user_image_link;
 
 	// for hover effect
 	$scope.message = "Hover over to know about me";

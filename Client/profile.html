@@ -4,7 +4,7 @@
 		<div class='col-sm-4' id='self-image'>
 			<div>{{message}}</div>
 			<div class='self-image' ng-model="myimage">
-				<img ng-src="/UMBC/ServerFiles/uploadimages/{{myimage}}" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
+				<img ng-src="/UMBC/ServerFiles/uploadimages/{{myimage}}" alt="Smiley face" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
 
 				<div class="edit-profile">
 					<div class="">
@@ -23,23 +23,18 @@
 				<strong>My Services</strong>
 				<table class="table" id='ad-section'>  
 		    	    <!-- if incomingAds is defined -->
-		    	    <tr>
-		    	        <a class="set-new-ads" ng-if="incomingAds.length > 0" ng-click="setNewAds()">There are {{difference}} new Ads from you</a> 
-		    	    </tr>
 		    		<tr class='row' ng-repeat="ad in my_ads">
 		    			<td class='col-md-2'>
 			    			{{ad.title}}
 			    			<!-- no add image yet, using default image -->
-			    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{myadimage}}" class='img-responsive' style="border:none; width: 100px; height: 80px;"/>
+			    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{myadimage}}" class='img-responsive' alt="Image....." style="border:none; width: 100px; height: 80px;"/>
 		    			</td>
 
 		    			<td>
 		    				<strong>{{aD.create_date | date: 'MM/dd/yyyy hh:mm'}}</strong>
 		    				<p>{{ad.content}}</p>
 		    		    </td>
-		    		    <td>
-		    		    	<strong>Poster email: </strong>{{ad.email}}
-		    		    </td>
+		    
 		    		    <td>
 		    		    	<div class="col-md-2 del-btn">
 								<button type="btn btn-default" ng-click="deleteAd()">Delete</button>
