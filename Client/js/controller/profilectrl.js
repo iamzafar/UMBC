@@ -115,11 +115,11 @@ myApp.controller('ProfileCtrl', ['$scope', '$http', '$interval', '$window', func
 
 	// delete add
 	$scope.deleteAd = function() {
-		
+		console.log("delete");
 		var ad_id = "";
 		// jquery 
 		$(function() {
-			ad_id = $('.del-btn').closest('li').attr('id');
+			ad_id = $('.del-btn').closest('tr').attr('id');
 		});
 
 		var adInfo = {
@@ -128,6 +128,7 @@ myApp.controller('ProfileCtrl', ['$scope', '$http', '$interval', '$window', func
 
 		$http.post("ServerFiles/adfiles/deletead.php", adInfo).success(function(res) {
 			// call getAds function again to refresh
+			console.log("hello");
 			getAds();
 
 		}).error(function(err) {

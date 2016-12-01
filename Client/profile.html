@@ -21,16 +21,16 @@
 		<div class='container'  id='add-container'>
 			<div class='col-sm-8' id='list-adds'>
 				<strong>My Services</strong>
-				<table class="table" id='ad-section'>  
+				<table class="table">  
 		    	    <!-- if incomingAds is defined -->
-		    		<tr class='row' ng-repeat="ad in my_ads">
-		    			<td class='col-md-2'>
+		    		<tr class='row' ng-repeat="ad in my_ads" id="{{ad.ad_id}}">
+		    			<td class='col-md-3'>
 			    			{{ad.title}}
 			    			<!-- no add image yet, using default image -->
 			    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{myadimage}}" class='img-responsive' alt="Image....." style="border:none; width: 100px; height: 80px;"/>
 		    			</td>
 
-		    			<td>
+		    			<td class='col-md-4'>
 		    				<strong>{{aD.create_date | date: 'MM/dd/yyyy hh:mm'}}</strong>
 		    				<p>{{ad.content}}</p>
 		    		    </td>

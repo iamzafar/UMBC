@@ -33,12 +33,12 @@ myApp.controller('SignUpCtrl', ['$scope', '$http', '$location', '$window', funct
 			console.log("invalid email");
 			error.push("User must be UMBC student, email is invalid");
 		}
-		if($scope.userInfo.password !== $scope.userInfo.re_pwd) {
+		else if($scope.userInfo.password !== $scope.userInfo.re_pwd) {
 			console.log("invalid input");
 			error.push("Password doesn't match");
 			return;
 		}
-		if($scope.userInfo.firstname === undefined || $scope.userInfo.lastname === undefined || $scope.userInfo.email === undefined || $scope.userInfo.password === undefined || $scope.userInfo.re_pwd === undefined) {
+		else if($scope.userInfo.firstname === undefined || $scope.userInfo.lastname === undefined || $scope.userInfo.email === undefined || $scope.userInfo.password === undefined || $scope.userInfo.re_pwd === undefined) {
 			console.log("invalid input");
 			error.push("Invalid input");
 			return;
