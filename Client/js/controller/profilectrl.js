@@ -37,13 +37,13 @@ myApp.directive("fileInput", ['$parse', function($parse) {
 }]);
 
 
-myApp.controller('ProfileCtrl', ['$scope', '$http', '$interval', function($scope, $http, $interval) {
-	$scope.my_ads = [];
+myApp.controller('ProfileCtrl', ['$scope', '$http', '$interval', '$window', function($scope, $http, $interval, $window) {
 
 	//user id
 	var local = JSON.parse(localStorage['user']);
 	var user_id = local['user']['user_id'];
 	var user_image_link = local['user']['image_link'];
+	console.log(localStorage);
 
 	$scope.username = "Hello User";
 	// user default image
@@ -82,14 +82,15 @@ myApp.controller('ProfileCtrl', ['$scope', '$http', '$interval', function($scope
 			method: 'POST',
 			headers: {'Content-Type': undefined, 'Process-Data': false}
 		}).success(function(res) {
-			
-		    console.log(res);
+			//$window.location.reload();
 			if(res['status'] === '1') {
 				alert("upload successfully");
 				$scope.myimage = res['image_link'];
-				console.log(res['image_link'] + " wawawwaaw");
-				localStorage.setItem('user', JSON.stringify({user: res}));
+				var local2 = JSON.parse(localStorage['user']);
+				local2['user']['image_link'] = res['image_link'];
 				
+				localStorage.setItem('user', JSON.stringify(local2));
+				console.log(localStorage);
 			} else {
 				alert("failed to upload");
 			}
@@ -123,7 +124,7 @@ myApp.controller('ProfileCtrl', ['$scope', '$http', '$interval', function($scope
 	}
 
 	// get user ads
-	var getAds = function(initial) {
+	var getAds = function() {
 		//console.log('it is called');
 	 	var userInfo = {
 	 		'user_id': user_id,
@@ -131,35 +132,15 @@ myApp.controller('ProfileCtrl', ['$scope', '$http', '$interval', function($scope
 
 	 	// send to php get ads
         $http.post("ServerFiles/adfiles/getads.php", userInfo).success(function(response) {
-        	if(initial) {
         		$scope.my_ads = response;
-        	} else {
-        		if(response.length > $scope.all_ads.length) {
-        			$scope.incomingAds = response;
-        		}
-        	}
+        	
         }).error(function(err) {
         	console.error(err);
         })
     };
 
-	$interval(function() {
-    	getAds(false);
-    	console.log("called");
-    	if($scope.incomingAds) {
-    		$scope.difference = $scope.incomingAds.length - $scope.my_ads.length;
-    	}
-    }, 5000);
-
-    $scope.setNewAds = function() {
-    	if($scope.incomingAds) {
-	    	$scope.my_ads = angular.copy($scope.incomingAds);
-	    	$scope.incomingAds = undefined; // delete this incomingWastes because we copy it, and then set to undefined to hide the number of tweets after update
-	    }
-    };
-
     // get data when load in home page
-    getAds(true);
+    getAds();
 }]);
 
 /*myApp.service('fileUpload', ['$http', function($http) {

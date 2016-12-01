@@ -5,19 +5,19 @@
     	    <tr>
     	        <a class="set-new-ads" ng-if="incomingAds.length > 0" ng-click="setNewAds()">There are {{difference}} new Post Ads from other users</a> 
     	    </tr>
-    		<tr class='row' ng-repeat="ad in all_ads">
+    		<tr class='row' ng-repeat="aD in all_ads">
     			<td class='col-md-2'>
-	    			{{ad.title}}
+	    			{{aD.title}}
 	    			<!-- no add image yet, using default image -->
 	    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{adimage}}" class='img-responsive' style="border:none; width: 100px; height: 80px;"/>
     			</td>
 
     			<td>
-    				<strong>{{ad.create_date | date: 'MM/dd/yyyy hh:mm'}}</strong>
-    				<p>{{ad.content}}</p>
+    				<strong>{{aD.create_date | date: 'MM/dd/yyyy hh:mm'}}</strong>
+    				<p>{{aD.content}}</p>
     		    </td>
     		    <td>
-    		    	<strong>Poster email: </strong>{{ad.email}}
+    		    	<strong>Poster email: </strong>{{aD.email}}
     		    </td>
     		</tr>
 
