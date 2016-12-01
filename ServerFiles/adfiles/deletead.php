@@ -9,7 +9,6 @@
 
 		// store to the database
 		$result = $db->prepare("DELETE FROM advertisement WHERE ad_id = '$ad_id'");
-		// $result->bind_param("ssi", $ad_id); // don't need this
 
 		if($result->execute()) {
 			$return = ["status" => '1'];

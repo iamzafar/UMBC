@@ -1,14 +1,17 @@
 <div class='' id='aboutme'>
-	<div class='row' id='self-info' ng-controller='AboutMeCtrl'>
-
-		<div class='col-sm-4' id='self-image'>
+	<div class='row' id='self-info'>
+		 <a class="set-new-ads" ng-if="incomingAds.length > 0" ng-click="setNewAds()">There are {{difference}} ads you have created</a>
+		<div class='col-sm-3' id='self-image'>
 			<div>{{message}}</div>
-			<div class='self-image'>
-				<img src="/UMBC/Client/images/userprofile/self_1.jpg" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
+			<div class='self-image' ng-model="myimage">
+				<img ng-src="/UMBC/ServerFiles/uploadimages/{{myimage}}" alt="Smiley face" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
 
 				<div class="edit-profile">
-					<div class="btn btn-default" ng-click="changeprofile()">
-						Edit Profile
+					<div class="">
+						<input type="file" file-input="files" /> 
+					</div>
+					<div class="btn btn-info" ng-click="changeprofile()">
+						Upload Profile
 					</div>
 				</div>
 			</div>
@@ -16,24 +19,31 @@
 
 		<!-- biograhpy container -->
 		<div class='container'  id='add-container'>
-			<div class='col-sm-8' id='list-adds'>
+			<div class='col-md-7' id='list-adds'>
 				<strong>My Services</strong>
+				<table class="table">  
+		    	    <!-- if incomingAds is defined -->
+		    		<tr class='row' ng-repeat="ad in my_ads" id="{{ad.ad_id}}">
+		    			<td class='col-md-4'>
+			    			{{ad.title}}
+			    			<!-- no add image yet, using default image -->
+			    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{myadimage}}" class='img-responsive' alt="Image....." style="border:none; width: 100px; height: 80px;"/>
 
-				<!-- list of adds if there is any -->
-				<ul>
-					
-					<li ng-repeat="add in my_adds">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								{{add.title}}
+		    			</td>
+
+		    			<td class='col-md-7'>
+		    				<strong>{{aD.create_date | date: 'MM/dd/yyyy hh:mm'}}</strong>
+		    				<p>{{ad.content}}</p>
+		    		    </td>
+		    
+		    		    <td class='col-md-2'>
+		    		    	<div class="col-md-1 del-btn">
+								<button type="btn btn-default" ng-click="deleteAd()">Delete</button>
 							</div>
-							<div class="panel-body">
-								{{add.description}}
-							</div>
-						</div>
-					</li>
-				</ul>
-				<!-- end list of adds if there is any -->
+		    		    </td>
+		    		</tr>
+
+		    	</table>
 			</div>
 
 		</div>

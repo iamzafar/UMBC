@@ -15,9 +15,8 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 	if($scope.loggedIn) {
 		var local = JSON.parse(localStorage['user']);
 		$scope.first_name = local['user']['first_name'];
-		console.log(local);
 	} else {
-		console.log("no");
+		console.log("no local user is set");
 	}
 
 	$scope.userInfo = {
@@ -70,7 +69,7 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 		}).error(function(error) {
 			console.error(error);
 		});
-		
+
 	}
 
 	/* user logout function */

@@ -1,3 +1,26 @@
 <div class='container'>
-Homesdvdfdfbdfbfdgsfdgsfdgsfdg
+	<div class="row">
+    	<table class="table" id='ad-section'>  
+    	    <!-- if incomingAds is defined -->
+    	    <tr>
+    	        <a class="set-new-ads" ng-if="incomingAds.length > 0" ng-click="setNewAds()">There are {{difference}} new Post Ads from other users</a> 
+    	    </tr>
+    		<tr class='row' ng-repeat="aD in all_ads">
+    			<td class='col-md-2'>
+	    			{{aD.title}}
+	    			<!-- no add image yet, using default image -->
+	    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{adimage}}" class='img-responsive' style="border:none; width: 100px; height: 80px;"/>
+    			</td>
+
+    			<td>
+    				<strong>{{aD.create_date | date: 'MM/dd/yyyy hh:mm'}}</strong>
+    				<p>{{aD.content}}</p>
+    		    </td>
+    		    <td>
+    		    	<strong>Poster email: </strong>{{aD.email}}
+    		    </td>
+    		</tr>
+
+    	</table>
+    </div>
 </div>

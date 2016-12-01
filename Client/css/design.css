@@ -44,6 +44,33 @@ div#user_name {
 
 }
 
+.my-jumbot {
+	padding-bottom: 10px;
+	padding-top: 10px;
+	padding: auto;
+	/*margin-bottom: 10px;*/
+
+}
+
+.my-ad-des {
+	height: 130px;
+}
+
+.my-title h3, .ad-image, .del-btn{
+	margin-top: 20px;
+}
+
+.ad-image {
+	margin-right: 10px;
+}
+
+.my-title {
+	margin-top: 0px;
+}
+
+.set-new-ads {
+	cursor: pointer;
+}
 
 /* Zarfar part css */
 .sign{
