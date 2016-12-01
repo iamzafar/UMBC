@@ -146,10 +146,11 @@ myApp.controller('ProfileCtrl', ['$scope', '$http', '$interval', '$window', func
 	 	// send to php get ads
         $http.post("ServerFiles/adfiles/getads.php", userInfo).success(function(response) {
         		$scope.my_ads = response;
+        		console.log("helO");
         	
         }).error(function(err) {
-        	console.error(err);
-        })
+        	console.log("hahds");
+        });
     };
 
     // get data when load in home page

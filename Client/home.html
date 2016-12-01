@@ -5,6 +5,7 @@
     	    <tr>
     	        <a class="set-new-ads" ng-if="incomingAds.length > 0" ng-click="setNewAds()">There are {{difference}} new Post Ads from other users</a> 
     	    </tr>
+            <!-- all_ads is array of JSON objects, aD is JSON variable -->
     		<tr class='row' ng-repeat="aD in all_ads">
     			<td class='col-md-2'>
 	    			{{aD.title}}
