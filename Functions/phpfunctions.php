@@ -160,8 +160,8 @@
 		$queryCoupons = "SELECT * FROM coupon WHERE CouponOwner = '$id'";
 		$rows = $db->query($queryCoupons);
 		if ( $rows->num_rows ) {
-			$arr = array();
-			while ( $row = $rows->fetch_assoc() ){
+			$arrs = "";
+			while ( $arrs = $rows->fetch_assoc() ){
 				$arr[] = $row;
 			}
 			$rows -> close();

@@ -24,6 +24,10 @@ myApp.controller('ServiceCtrl', ['$scope', '$http', '$location', '$window', func
 
 			if(res['status'] === '1') {
 				console.log("success saved ads");
+				// jquery
+				$scope.user.adsTitle = "";
+				$scope.user.adsContent = "";
+
 			} else {
 				console.log("fail to save ads");
 			}

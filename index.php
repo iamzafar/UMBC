@@ -51,32 +51,6 @@
 			<!-- nav bar content -->
 			<div class='container' ng-controller="LoginCtrl">
 				<div ng-show="loggedIn" class='row' id='nav-row'>		
-
-				<!-- 	<div class='col-sm-2'>
-						<a href ="#home"><h2>Home</h2></a>
-					</div>
-
-					<div class='col-sm-2'>
-						<a href="#service"><h2>Service</h2></a>
-					</div>
-
-					<div class='col-sm-2'>
-						<a href="#profile"><h2>Profile</h2></a>
-					</div> 
-
-					<div class='col-sm-4'>
-						<div id="user_name" ng-model="first_name"> 
-
-							<h1>Welcome BOB</h1>
-						</div>
-					</div> -->
-
-					<!-- uses indexctrl to check login part -->
-				<!-- 	 <div class='col-sm-2'>
-						<a id="logout" ng-click="userLogout()"> 
-							<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-						</a>
-					</div> --> 
 					<!-- Navigation header  -->
 					<div class="navbar-header">
 			      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -84,8 +58,9 @@
 			        <span class="icon-bar"></span>
 			       
 			      </button>
-			      <a class="navbar-brand" href="#myPage">Barking-Bazaar</a>
+			      <a class="navbar-brand" href="">Barking-Bazaar</a>
     			</div>
+
     			<!-- Navigation bar -->
     			<!-- Put extra navigation here -->
 					<div class="collapse navbar-collapse" id="myNavbar">
@@ -97,7 +72,7 @@
 			      <!-- Log out part of the navigation -->
    					<ul  class="nav navbar-nav navbar-right">
    						<li>
-   							<a href="#">
+   							<a href="">
    								<span id="user_name" ng-model="first_name">
    								<!-- read user first name -->
    								Welcome {{first_name}}
@@ -113,15 +88,16 @@
     			</div>
 
     			</div>
+    			<div ng-show="!loggedIn" class='row' id='index'>
+					<div class='col-sm-4' id="login">
+						<a href="#login"><strong>Login</strong></a>
+					</div>
+				</div> 
     		</div>
 
     			 <!-- end of nav bar tab loggined content-->
 				
-				<!-- <div ng-show="!loggedIn" class='row' id='index'>
-				<div class='col-sm-4' id="login">
-					<a href="#login"><strong>Login</strong></a>
-				</div>
-			</div>  -->
+			
 			<!-- end of nav bar container -->
 			<!-- ng-show is for toggle between login and logout icon -->
 		</nav>

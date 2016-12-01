@@ -37,17 +37,23 @@ myApp.directive("fileInput", ['$parse', function($parse) {
 }]);
 
 
-myApp.controller('ProfileCtrl', ['$scope', '$http',  function($scope, $http) {
+myApp.controller('ProfileCtrl', ['$scope', '$http', '$interval', function($scope, $http, $interval) {
+	$scope.my_ads = [];
+
+	//user id
+	var local = JSON.parse(localStorage['user']);
+	var user_id = local['user']['user_id'];
+	var user_image_link = local['user']['image_link'];
+
 	$scope.username = "Hello User";
 	// user default image
 	var defaultPath = "userprofile/";
 
 	// add image default
-	$scope.myaddimage = defaultPath + "default.jpg";
+	$scope.myadimage = defaultPath + "default_ad.jpg";
 
 	// user profile image
-	$scope.myimage = defaultPath + "default.jpg";
-	var local = JSON.parse(localStorage['user']);
+	$scope.myimage = (user_image_link.length === 0) ? defaultPath + "default.jpg" : user_image_link;
 
 	// for hover effect
 	$scope.message = "Hover over to know about me";
@@ -55,27 +61,12 @@ myApp.controller('ProfileCtrl', ['$scope', '$http',  function($scope, $http) {
 		console.log("hello");
 	}
 
-	/* static adds right now*/
-	$scope.my_adds = [
-		{
-			"title" : "Testing add 1",
-			"description" : "Testing description 1, this is a static data that just to show how this is will be looked"
-		}
-	]
-	$scope.my_adds.push(
-		{
-			"title" : "Testing add 12",
-			"description" : "Testing description 2, this is a static data that just to show how this is will be looked"
-		}
-	)
-	
 	$scope.changeprofile = function() {
 		console.log("changeprofile is called");
 
 		var files = $scope.files;
 		var uploadUrl = "ServerFiles/uploadimages/upload.php";
-		var local = JSON.parse(localStorage['user']);
-		var user_id = local['user']['user_id'];
+		
 
 		//fileUpload.uploadFile(files, uploadUrl, user_id);
 
@@ -95,7 +86,10 @@ myApp.controller('ProfileCtrl', ['$scope', '$http',  function($scope, $http) {
 		    console.log(res);
 			if(res['status'] === '1') {
 				alert("upload successfully");
-				$scope.myimage = res['image'];
+				$scope.myimage = res['image_link'];
+				console.log(res['image_link'] + " wawawwaaw");
+				localStorage.setItem('user', JSON.stringify({user: res}));
+				
 			} else {
 				alert("failed to upload");
 			}
@@ -106,11 +100,66 @@ myApp.controller('ProfileCtrl', ['$scope', '$http',  function($scope, $http) {
 
 	}
 
-	// select the new uploaded image
-	$scope.select = function() {
-		$http.get("select.php")
+	// delete add
+	$scope.deleteAd = function() {
+		
+		var ad_id = "";
+		// jquery 
+		$(function() {
+			ad_id = $('.del-btn').closest('li').attr('id');
+		});
+
+		var adInfo = {
+			'ad_id' : ad_id
+		};
+
+		$http.post("ServerFiles/adfiles/deletead.php", adInfo).success(function(res) {
+			// call getAds function again to refresh
+			getAds();
+
+		}).error(function(err) {
+			console.error(err);
+		})
 	}
 
+	// get user ads
+	var getAds = function(initial) {
+		//console.log('it is called');
+	 	var userInfo = {
+	 		'user_id': user_id,
+	 	};
+
+	 	// send to php get ads
+        $http.post("ServerFiles/adfiles/getads.php", userInfo).success(function(response) {
+        	if(initial) {
+        		$scope.my_ads = response;
+        	} else {
+        		if(response.length > $scope.all_ads.length) {
+        			$scope.incomingAds = response;
+        		}
+        	}
+        }).error(function(err) {
+        	console.error(err);
+        })
+    };
+
+	$interval(function() {
+    	getAds(false);
+    	console.log("called");
+    	if($scope.incomingAds) {
+    		$scope.difference = $scope.incomingAds.length - $scope.my_ads.length;
+    	}
+    }, 5000);
+
+    $scope.setNewAds = function() {
+    	if($scope.incomingAds) {
+	    	$scope.my_ads = angular.copy($scope.incomingAds);
+	    	$scope.incomingAds = undefined; // delete this incomingWastes because we copy it, and then set to undefined to hide the number of tweets after update
+	    }
+    };
+
+    // get data when load in home page
+    getAds(true);
 }]);
 
 /*myApp.service('fileUpload', ['$http', function($http) {

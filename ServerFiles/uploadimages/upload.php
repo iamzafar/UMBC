@@ -20,10 +20,10 @@
 						$result->bind_param("s", $filepath);
 
 						if($result->execute()) {
-							$userData = ['status' => '1', 'image' => $filepath];
+							$userData = ['status' => '1', 'image_link' => $filepath];
 							echo json_encode($userData);
 						} else {
-							$userData = ['status' => '0', 'image' => $filepath];
+							$userData = ['status' => '0', 'image_link' => $filepath];
 							echo json_encode($userData);
 						}
 
@@ -40,11 +40,11 @@
 
 					if($result->execute()) {
 						$db->close();
-						$userData = ['status' => '1', 'image' => $filepath];
+						$userData = ['status' => '1', 'image_link' => $filepath];
 						echo json_encode($userData);
 					} else {
 						$db->close();
-						$userData = ['status' => '0', 'image' => $filepath];
+						$userData = ['status' => '0', 'image_link' => $filepath];
 						echo json_encode($userData);
 					}
 
@@ -56,11 +56,11 @@
 
 					if($result->execute()) {
 						$db->close();
-						$userData = ['status' => '1', 'image' => $filepath];
+						$userData = ['status' => '1', 'image_link' => $filepath];
 						echo json_encode($userData);
 					} else {
 						$db->close();
-						$userData = ['status' => '0', 'image' => $filepath];
+						$userData = ['status' => '0', 'image_link' => $filepath];
 						echo json_encode($userData);
 					}
 				}

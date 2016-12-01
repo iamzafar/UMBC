@@ -1,7 +1,7 @@
 myApp.controller('SignUpCtrl', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window) {
 
 	console.log("signup is called");
-
+	var error = [];
 	// set user data variable
 	$scope.userInfo = {
 		"firstname" : "",
@@ -14,6 +14,14 @@ myApp.controller('SignUpCtrl', ['$scope', '$http', '$location', '$window', funct
 	// signup function
 	// re_pwd
 	$scope.userSignup = function(event) {
+
+		var email = $scope.userInfo.email;
+		var atIndex = email.indexOf("@");
+		console.log(atIndex);
+		var subEmail = email.substring(atIndex+1);
+
+		console.log(subEmail);
+
 		var userInfo = {
 			"firstname" : $scope.userInfo.firstname,
 			"lastname" : $scope.userInfo.lastname,
@@ -21,30 +29,38 @@ myApp.controller('SignUpCtrl', ['$scope', '$http', '$location', '$window', funct
 			"password" : $scope.userInfo.password,
 			"re_pwd" : $scope.userInfo.re_pwd 
 		}
-
+		if(subEmail !== "umbc.edu") {
+			console.log("invalid email");
+			error.push("User must be UMBC student, email is invalid");
+		}
 		if($scope.userInfo.password !== $scope.userInfo.re_pwd) {
 			console.log("invalid input");
-			alert("Password doesn't match");
+			error.push("Password doesn't match");
 			return;
-		} else if($scope.userInfo.firstname === undefined || $scope.userInfo.lastname === undefined || $scope.userInfo.email === undefined || $scope.userInfo.password === undefined || $scope.userInfo.re_pwd === undefined) {
+		}
+		if($scope.userInfo.firstname === undefined || $scope.userInfo.lastname === undefined || $scope.userInfo.email === undefined || $scope.userInfo.password === undefined || $scope.userInfo.re_pwd === undefined) {
 			console.log("invalid input");
-			alert("Invalid input");
+			error.push("Invalid input");
 			return;
-		} else if($scope.userInfo.firstname === "" || $scope.userInfo.lastname === "" || $scope.userInfo.email === "" || $scope.userInfo.password === "" || $scope.userInfo.re_pwd === "") {
+		}
+		else if($scope.userInfo.firstname === "" || $scope.userInfo.lastname === "" || $scope.userInfo.email === "" || $scope.userInfo.password === "" || $scope.userInfo.re_pwd === "") {
 			console.log("invalid input");
-			alert("Invalid input");
+			error.push("Invalid input");
 			return;
+		} 
+		// if error free call the http post
+		if(error.length !== 0) {
+			alert(error.join('\n'));
 		} else {
-
 			$http.post("ServerFiles/signupfiles/signup.php", userInfo).success(function(res) {
 				if(res.status == "userfound") {
 					alert("userfound");
 				}
-				console.log(res.status);
 			}).error(function(err) {
-				console.log(error(err));
+				alert("unknown error, try again");
 			});
 		}
+		
 	}
 
 }]);

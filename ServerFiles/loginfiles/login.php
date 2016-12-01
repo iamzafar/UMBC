@@ -22,15 +22,15 @@
 		//echo $data->email . " theemail\n";
 		
 		//pulls the corresponding password from the database and stores as dbPassword
-		$dbPasswordObj = $db->prepare( "SELECT user_id, password, first_name FROM user WHERE email = '$data->email'" );
+		$dbPasswordObj = $db->prepare( "SELECT user_id, password, first_name, image_link FROM user WHERE email = '$data->email'" );
 		$dbPasswordObj->execute();
-		$dbPasswordObj->bind_result($user_id, $dbPassword, $first_name);
+		$dbPasswordObj->bind_result($user_id, $dbPassword, $first_name, $image_link);
 		
 		// if there is a record return
 		if($dbPasswordObj->fetch()) {
 			if(password_verify($hashedPW, $dbPassword)) {
 				$isLoggin = true;
-				$userData = ['status' => '1', 'user_id'=> $user_id, 'email' => $data->email, 'first_name' => $first_name];
+				$userData = ['status' => '1', 'user_id'=> $user_id, 'email' => $data->email, 'first_name' => $first_name, 'image_link' => $image_link];
 				/* send email back to front end to test if this end point is working */
 				echo json_encode($userData);
 			} else {
