@@ -3,7 +3,7 @@ myApp.controller('ServiceCtrl', ['$scope', '$http', '$location', '$window', func
 	console.log("service controller is called");
 
 	var local = JSON.parse(localStorage['user']);
-	var user_id = local['user']['user_id'];
+	var user_id = local['user']['user_id']; // get loggedin person's identity
 	
 	$scope.user = {
 		"adsTitle" : "",
@@ -17,6 +17,7 @@ myApp.controller('ServiceCtrl', ['$scope', '$http', '$location', '$window', func
 			"user_id" : user_id,
 			"adsTitle" : $scope.user.adsTitle,
 			"adsContent" : $scope.user.adsContent
+			//"adsImage" : $scope.user.adsImage
 		};
 
 		$http.post("ServerFiles/adfiles/createad.php", userAdsInfo).success(function(res) {
@@ -24,10 +25,6 @@ myApp.controller('ServiceCtrl', ['$scope', '$http', '$location', '$window', func
 
 			if(res['status'] === '1') {
 				console.log("success saved ads");
-				// jquery
-				$scope.user.adsTitle = "";
-				$scope.user.adsContent = "";
-
 			} else {
 				console.log("fail to save ads");
 			}
@@ -40,5 +37,18 @@ myApp.controller('ServiceCtrl', ['$scope', '$http', '$location', '$window', func
 	// upload image
 	$scope.upload_picture = function() {
 		console.log("upload is called");
+		var preview = document.querySelector('img');
+       var file    = document.querySelector('input[type=file]').files[0];
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
 	}
 }]);
