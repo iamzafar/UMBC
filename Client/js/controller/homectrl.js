@@ -27,6 +27,7 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
         });
     };
 
+    // interval time of the post that should appear is 5 seconds
     $interval(function() {
     	getAds(false);
     	console.log("called");
@@ -42,7 +43,54 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
 	    }
     };
 
+    // ********************************************************
+    // my updates
+    $scope.currentPage = 0;
+    $scope.defaultPageSize = 5;
+    $scope.pageSize = 5;    
+    $scope.numberOfPages=function(){
+        
+        // cannot get the SIZE of JSON array!!!!!
+        var jsonArraylen;
+        if($scope.all_ads === 'null'){
+            jsonArraylen = 0;
+        }else{
+            if (!Object.keys) {
+                 Object.keys = function (obj) {
+                var keys = [],
+                    k;
+                for (k in obj) {
+                    if (Object.prototype.hasOwnProperty.call(obj, k)) {
+                        keys.push(k);
+                    }
+                }
+                    return keys;
+                };
+            }
+
+         jsonArraylen = Object.keys($scope.all_ads).length; // here is the problem
+        }
+        var len = Math.ceil(jsonArraylen/$scope.pageSize);
+        $scope.pageArray = [];
+        
+        for( var i = 0; i < len; i++ )
+        {
+            $scope.pageArray.push( i);
+        }
+        
+        return len;                
+    }
+
+
     // init
     getAds(true);
    
 }]);
+
+myApp.filter('startFrom', function() {
+    return function(input, start) {
+        if (!input || !input.length) { return; }
+        start =+ start; //parse to int
+        return input.slice(start);
+    }
+});
