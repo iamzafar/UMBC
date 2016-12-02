@@ -1,7 +1,7 @@
 <div class='' id='aboutme'>
 	<div class='row' id='self-info'>
 		 <a class="set-new-ads" ng-if="incomingAds.length > 0" ng-click="setNewAds()">There are {{difference}} ads you have created</a>
-		<div class='col-sm-3' id='self-image'>
+		<div class='col-md-3' id='self-image'>
 			<div>{{message}}</div>
 			<div class='self-image' ng-model="myimage">
 				<img ng-src="/UMBC/ServerFiles/uploadimages/{{myimage}}" alt="Smiley face" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
@@ -28,9 +28,7 @@
 			    			{{ad.title}}
 			    			<!-- no add image yet, using default image -->
 			    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{myadimage}}" class='img-responsive' alt="Image....." style="border:none; width: 100px; height: 80px;"/>
-
 		    			</td>
-
 		    			<td class='col-md-7'>
 		    				<strong>{{aD.create_date | date: 'MM/dd/yyyy hh:mm'}}</strong>
 		    				<p>{{ad.content}}</p>
@@ -42,7 +40,7 @@
 							</div>
 		    		    </td>
 		    		</tr>
-
+		    		
 		    	</table>
 			</div>
 

@@ -56,6 +56,8 @@ myApp.controller('SignUpCtrl', ['$scope', '$http', '$location', '$window', funct
 				if(res.status == "userfound") {
 					alert("userfound");
 				}
+				$location.path('/login');
+				$window.location.reload();
 			}).error(function(err) {
 				alert("unknown error, try again");
 			});

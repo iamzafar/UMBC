@@ -2,6 +2,7 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
 
 	// user default image
 	var defaultPath = "userprofile/";
+    var all_ads = "";
 
 	// add image default
 	$scope.adimage = defaultPath + "default_ad.jpg";
@@ -18,7 +19,10 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
 
         $http.post("ServerFiles/homepage/getallads.php", userInfo).success(function(response) {
         	if(initial) {
-        		$scope.all_ads = response;
+        		//$scope.all_ads = response;
+                all_ads = response;
+                $scope.all_ads = angular.copy(all_ads);;
+                all_ads = undefined;
         	} else {
         		if(response.length > $scope.all_ads.length) {
         			$scope.incomingAds = response;
@@ -67,8 +71,11 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
                     return keys;
                 };
             }
-
-         jsonArraylen = Object.keys($scope.all_ads).length; // here is the problem
+            if(all_ads !== undefined) {
+                $scope.all_ads = angular.copy(all_ads);
+                jsonArraylen = Object.keys($scope.all_ads).length; // here is the problem
+                all_ads = undefined;
+            }
         }
         var len = Math.ceil(jsonArraylen/$scope.pageSize);
         $scope.pageArray = [];
