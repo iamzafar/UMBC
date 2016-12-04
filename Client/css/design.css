@@ -56,8 +56,15 @@ div#user_name {
 	height: 130px;
 }
 
-.my-title h3, .ad-image, .del-btn{
+.my-title h3, .ad-image{
 	margin-top: 20px;
+}
+
+.del-btn{
+	/*margin-top: 10px;*/
+	/*margin-bottom: 10px;*/
+	min-width: 80px;
+    max-width: 80px;	
 }
 
 .ad-image {

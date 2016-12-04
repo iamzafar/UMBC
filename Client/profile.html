@@ -4,12 +4,13 @@
 		<div class='col-md-3' id='self-image'>
 			<div>{{message}}</div>
 			<div class='self-image' ng-model="myimage">
-				<img ng-src="/UMBC/ServerFiles/uploadimages/{{myimage}}" alt="Smiley face" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;"> <!-- shows-message-when-hovered, this is a custom directive -->
-
+				<img ng-src="/UMBC/ServerFiles/uploadimages/{{myimage}}" alt="Smiley face" shows-message-when-hovered message='Hello' style="border:none; width: 220px; height: 200px;" class="img-rounded"> <!-- shows-message-when-hovered, this is a custom directive -->
+				<br> <br>
 				<div class="edit-profile">
 					<div class="">
 						<input type="file" file-input="files" /> 
 					</div>
+					<br>
 					<div class="btn btn-info" ng-click="changeprofile()">
 						Upload Profile
 					</div>
@@ -19,26 +20,28 @@
 
 		<!-- biograhpy container -->
 		<div class='container'  id='add-container'>
-			<div class='col-md-7' id='list-adds'>
-				<strong>My Services</strong>
-				<table class="table">  
+			<div class='col-md-9' id='list-adds'>
+				<h1><small>My posts</small></h1>
+				<table class="table table-hover">  
 		    	    <!-- if incomingAds is defined -->
 		    		<tr class='row' ng-repeat="ad in my_ads" id="{{ad.ad_id}}">
 		    			<td class='col-md-4'>
 			    			{{ad.title}}
 			    			<!-- no add image yet, using default image -->
-			    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{myadimage}}" class='img-responsive' alt="Image....." style="border:none; width: 100px; height: 80px;"/>
+			    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{myadimage}}" class='img-responsive img-rounded' alt="Image....." style="border:none; width: 100px; height: 80px;"/>
 		    			</td>
 		    			<td class='col-md-7'>
 		    				<strong>{{aD.create_date | date: 'MM/dd/yyyy hh:mm'}}</strong>
 		    				<p>{{ad.content}}</p>
-		    		    </td>
-		    
-		    		    <td class='col-md-2'>
-		    		    	<div class="col-md-1 del-btn">
-								<button type="btn btn-default" ng-click="deleteAd()">Delete</button>
-							</div>
-		    		    </td>
+		    		    </td>		    
+		    		   <td class='col-md-1'>
+		    		   	<div class="col-sm-0 del-btn">
+									<button type="button" class="btn btn-warning btn-sm">Edit</button>
+								</div>
+		    		   	<div class="col-sm-0 del-btn">
+									<button type="button" class="btn btn-danger btn-sm" ng-click="deleteAd()">Delete</button>
+								</div>
+		    		   </td>
 		    		</tr>
 		    		
 		    	</table>
