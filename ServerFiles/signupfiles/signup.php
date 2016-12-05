@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require("../../Config/connect_db.php");
 	require("../../Functions/phpfunctions.php");
 	/* need to include or require another php file to connect to database */
@@ -24,11 +25,17 @@
 
 		// use string before @ from email to be the hahsed key
 		// would suggest sha256 for this
-		$salt = md5($emailBegin);
+		$salt = md5("barkingbizaar");
 
 		// encrypt email, and clean up the '+, /' character
-		$email_hashed = encrypt($emailBegin, $salt).$emailEnd;
-		$email_hashed = replacePlus($email_hashed);
+		$email_hashed = encrypt($emailBegin, $salt);
+		for($i = 0; $i < strlen($email_hashed); $i++) {
+          if($email_hashed[$i] == '+') {
+            $email_hashed[$i] = '*';
+          }
+        }
+
+		$email_hashed .= $emailEnd;
 
 		// hash the password using bcrypt with salt
 		// first hash, using sha256
@@ -38,14 +45,14 @@
 		$password = password_hash($password, PASSWORD_DEFAULT);
 
 		// check if user has already existed
-		$userExist = emailExists($db, $connect, $email);
+		$userExist = emailExists($db, $connect, $email_hashed);
 		if($userExist) {
 			$userData = ["status" => "userfound"];
 			echo json_encode($userData);
 		} else {
 			// $db->prepare return an obj
 			$result = $db->prepare("INSERT INTO user (first_name, last_name, password, email) VALUES(?, ?, ?, ?)");
-			$result->bind_param("ssss", $firstname, $lastname, $password, $email);
+			$result->bind_param("ssss", $firstname, $lastname, $password, $email_hashed);
 
 			// if store the database failed
 			if(!$result->execute()) {

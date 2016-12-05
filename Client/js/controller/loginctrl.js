@@ -1,7 +1,7 @@
 // jquery lib
 (function() {
 myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window) {
-
+	var local = undefined;
 	if(localStorage['user']) {
     	$scope.loggedIn = true;
     } else {
@@ -13,7 +13,7 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 	
 	// parse the json;
 	if($scope.loggedIn) {
-		var local = JSON.parse(localStorage['user']);
+		local = JSON.parse(localStorage['user']);
 		$scope.first_name = local['user']['first_name'];
 	} else {
 		console.log("no local user is set");
@@ -23,8 +23,6 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 		"email" : undefined,
 		"password" : undefined
 	}
-
-	
 
 	/* user loggin function */
 	$scope.userLogin = function() {
@@ -59,9 +57,9 @@ myApp.controller('LoginCtrl', ['$scope', '$http', '$location', '$window', functi
 				
 				// jquery function
 				$(function(){
-				(function() {
-					$("#exampleInputPassword3").val("").attr("placeholder", "Invalid password of user email");
-				}());
+					(function() {
+						$("#exampleInputPassword3").val("").attr("placeholder", "Invalid password of user email");
+					}());
 				});
 				
 			}

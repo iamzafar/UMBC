@@ -1,4 +1,6 @@
 <?php
+	// session is used for user salt
+	session_start();
 	require '../../Config/connect_db.php';
 	require '../../functions/phpfunctions.php';
 
@@ -11,7 +13,21 @@
 		if($result->num_rows) {
 			$row = "";
 			while($row = $result->fetch_assoc()) {
-				// get user email
+				/* decrypt user email */ 
+				$email = $row['email'];
+				$emailBegin = emailBegin($email);
+				$emailEnd = emailEnd($email);
+				for($i = 0; $i < strlen($emailBegin); $i++) {
+		          if($emailBegin[$i] == '*') {
+		            $emailBegin[$i] = '+';
+		          }
+		        }
+		   
+		        $emailDecrypt = decrypt($emailBegin, $_SESSION['salt']);
+		        
+		        $row['email'] = $emailDecrypt . $emailEnd;
+
+
 				$userAds[] = $row;
 			}
 

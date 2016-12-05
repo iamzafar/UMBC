@@ -2,7 +2,6 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
 
 	// user default image
 	var defaultPath = "userprofile/";
-    var all_ads = "";
 
 	// add image default
 	$scope.adimage = defaultPath + "default_ad.jpg";
@@ -12,36 +11,28 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
 	 	//console.log('it is called');
 
 	 	// get user id;
-	 	if(localStorage['user']) {
-		 	var local = JSON.parse(localStorage['user']);
-			var userInfo =  {
-				'user_id': local['user']['user_id']
-			}
+	 	var local = JSON.parse(localStorage['user']);
+		var userInfo =  {
+			'user_id': local['user']['user_id']
+		}
 
-	        $http.post("ServerFiles/homepage/getallads.php", userInfo).success(function(response) {
-	        	if(initial) {
-	        		//$scope.all_ads = response;
-	                all_ads = response;
-	                $scope.all_ads = angular.copy(all_ads);;
-	                all_ads = undefined;
-	        	} else {
-	        		if(response.length > $scope.all_ads.length) {
-	        			$scope.incomingAds = response;
-	        		}
-	        	}
-	        });
-	    }
+        $http.post("ServerFiles/homepage/getallads.php", userInfo).success(function(response) {
+        	if(initial) {
+        		$scope.all_ads = response;
+        	} else {
+        		if(response.length > $scope.all_ads.length) {
+        			$scope.incomingAds = response;
+        		}
+        	}
+        });
     };
 
-    // interval time of the post that should appear is 5 seconds
     $interval(function() {
     	getAds(false);
     	console.log("called");
-    	if(localStorage['user']) {
-	    	if($scope.incomingAds) {
-	    		$scope.difference = $scope.incomingAds.length - $scope.all_ads.length;
-	    	}
-	    }
+    	if($scope.incomingAds) {
+    		$scope.difference = $scope.incomingAds.length - $scope.all_ads.length;
+    	}
     }, 5000);
 
     $scope.setNewAds = function() {
@@ -97,11 +88,3 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
     getAds(true);
    
 }]);
-
-myApp.filter('startFrom', function() {
-    return function(input, start) {
-        if (!input || !input.length) { return; }
-        start =+ start; //parse to int
-        return input.slice(start);
-    }
-});

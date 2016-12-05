@@ -196,7 +196,7 @@
 
 	//update password
 	function updatePwd( $emailEncrypt, $newhashPwd, $db ){
-		$query = "UPDATE users SET Password = ? WHERE Email = '$emailEncrypt'";
+		$query = "UPDATE user SET password = ? WHERE email = '$emailEncrypt'";
 		$result = $db->prepare($query);
 		$result->bind_param( 's', $newhashPwd );
 		if( $result->execute() ){

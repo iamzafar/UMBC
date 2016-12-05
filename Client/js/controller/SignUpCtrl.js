@@ -31,6 +31,7 @@ myApp.controller('SignUpCtrl', ['$scope', '$http', '$location', '$window', funct
 		}
 		if(subEmail !== "umbc.edu") {
 			console.log("invalid email");
+			console.log(subEmail);
 			error.push("User must be UMBC student, email is invalid");
 		}
 		else if($scope.userInfo.password !== $scope.userInfo.re_pwd) {
@@ -51,6 +52,8 @@ myApp.controller('SignUpCtrl', ['$scope', '$http', '$location', '$window', funct
 		// if error free call the http post
 		if(error.length !== 0) {
 			alert(error.join('\n'));
+			$scope.userInfo.email = "";
+			error = [];
 		} else {
 			$http.post("ServerFiles/signupfiles/signup.php", userInfo).success(function(res) {
 				if(res.status == "userfound") {
@@ -64,5 +67,4 @@ myApp.controller('SignUpCtrl', ['$scope', '$http', '$location', '$window', funct
 		}
 		
 	}
-
 }]);
