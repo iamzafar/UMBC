@@ -1,9 +1,32 @@
+// for upload files;
+myApp.directive("imageUpload", ['$parse', function($parse) {	
+	return {
+		// element will the html tag
+		restrict: 'A',
+		link: function(scope, element, attrs) {
+			var model = $parse(attrs.imageUpload);
+	        var modelSetter = model.assign;
+
+	        element.bind('change', function(){
+	            scope.$apply(function(){
+	                modelSetter(scope, element[0].files[0]);
+	            });
+	        });
+		}
+	}
+}]);
+
+
+
 myApp.controller('ServiceCtrl', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window) {
 	// deguging
 	console.log("service controller is called");
 
+	var user_image_link;
+
 	var local = JSON.parse(localStorage['user']);
 	var user_id = local['user']['user_id']; // get loggedin person's identity
+	var defaultPath = "userprofile/" + user_id + "/";
 	
 	$scope.user = {
 		"adsTitle" : "",
@@ -49,6 +72,20 @@ myApp.controller('ServiceCtrl', ['$scope', '$http', '$location', '$window', func
 
        if (file) {
            reader.readAsDataURL(file); //reads the data as a URL
+
+            // upload image here !!!!!!!
+            var files = $scope.files;
+			var uploadUrl = "ServerFiles/uploadimages/uploadimage.php";
+			
+
+			//fileUpload.uploadFile(files, uploadUrl, user_id);
+
+			var form_data = new FormData();
+
+			form_data.append('file', files);
+			form_data.append('user_id', user_id);
+			console.log(files);
+
        } else {
            preview.src = "";
        }

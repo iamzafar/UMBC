@@ -7,7 +7,7 @@
 	if($connect) {
 
 		$userAds = array();
-		$query = "SELECT create_date, title, content, email FROM advertisement, user WHERE user_id = user_user_id ORDER BY ad_id DESC";
+		$query = "SELECT create_date, title, content, email, image_link FROM advertisement, user WHERE user_id = user_user_id ORDER BY ad_id DESC";
 
 		$result = $db->query($query);
 		if($result->num_rows) {
@@ -26,7 +26,10 @@
 		        $emailDecrypt = decrypt($emailBegin, $_SESSION['salt']);
 		        
 		        $row['email'] = $emailDecrypt . $emailEnd;
-
+		        $defaultPath = "userprofile/";
+		        if(strlen($row['image_link']) == 0) {
+		        	$row['image_link'] = $defaultPath . "default.jpg";
+		        }
 
 				$userAds[] = $row;
 			}

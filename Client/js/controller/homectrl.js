@@ -1,5 +1,16 @@
-myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $http, $interval) {
+myApp.directive('hoverZoom', function() {
+    return {
+        // A: Attribute, C: Class name, E: Element  eg: <superman></superman> M: HTML comments
+        restrict: "M", 
+        link: function(scope, element){
+           $(element).hoverZoom({speedView:600, speedRemove:400, showCaption:true, 
+            speedCaption:600, debug:true, hoverIntent: true, loadingIndicatorPos: 'center'});
+        }
+    };
+});
 
+
+myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $http, $interval) {
 	// user default image
 	var defaultPath = "userprofile/";
     var all_ads = "";
@@ -60,7 +71,7 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
         
         // cannot get the SIZE of JSON array!!!!!
         var jsonArraylen;
-        if($scope.all_ads === 'null'){
+        if($scope.all_ads == 'null' || $scope.all_ads == undefined){
             jsonArraylen = 0;
         }else{
             if (!Object.keys) {
@@ -75,10 +86,11 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
                     return keys;
                 };
             }
-            if(all_ads !== undefined) {
-                $scope.all_ads = angular.copy(all_ads);
+            if($scope.all_ads !== undefined) {
                 jsonArraylen = Object.keys($scope.all_ads).length; // here is the problem
                 all_ads = undefined;
+            } else {
+            	jsonArraylen = 0;
             }
         }
         var len = Math.ceil(jsonArraylen/$scope.pageSize);
@@ -91,6 +103,14 @@ myApp.controller('HomeCtrl', ['$scope', '$http', '$interval', function($scope, $
         
         return len;                
     }
+
+    $(function(){
+        (function() {
+            $('img').on('click', function() {
+                console.log("image");
+            });
+        }());
+    });  
 
 
     // init

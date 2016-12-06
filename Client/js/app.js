@@ -24,6 +24,10 @@ var myApp = angular.module('DrakeWeb', ['ngRoute', 'ngResource']).config(
 			url:'/service',
 			templateUrl: '/UMBC/Client/service.html',
 			controller: 'ServiceCtrl'		
+		}).
+		when('/about', {
+			url:'/about',
+			templateUrl: '/UMBC/Client/about.html'
 		});
 
 		$routeProvider.otherwise({redirectTo: '/login'});

@@ -79,6 +79,14 @@ div#user_name {
 	cursor: pointer;
 }
 
+#logo {
+	cursor: pointer;
+}
+
+.link img {
+	margin-top: 10px;
+}
+
 /* Zarfar part css */
 .sign{
 	text-align: center;

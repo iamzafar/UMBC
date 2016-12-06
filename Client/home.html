@@ -8,19 +8,24 @@
     	    </tr>
             <!-- all_ads is array of JSON objects, aD is JSON variable -->
     		<tr class='row' ng-repeat="aD in all_ads | startFrom:currentPage*pageSize | limitTo:pageSize">
-    			<td class='col-md-2'>
-	    			<b>{{aD.title}}</b>
+    			<td class='col-md-1'>
+	    			{{aD.title}}
 	    			<!-- no add image yet, using default image -->
-	    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{adimage}}" class='img-responsive img-rounded' style="border:none; width: 100px; height: 80px;" alt="Responsive image"/>
+	    			<img ng-src="/UMBC/ServerFiles/uploadimages/{{adimage}}" class='img-responsive img-rounded' style="border:none; width: 90px; height: 70px;" alt="Responsive image"/>
     			</td>
 
-    			<td>
+    			<td class='col-md-6'>
     				<strong>{{aD.create_date | date: 'MM/dd/yyyy hh:mm'}}</strong>
     				<p>{{aD.content}}</p>
     		    </td>
-    		    <td>
-    		    	<strong>Poster email: </strong>{{aD.email}}
-    		    </td>
+                <td class='col-md-1'>
+                    <strong>Poster email: </strong>{{aD.email}}
+                </td>
+                <td class='col-md-2 grow pic'>
+                    <a class='link' hover-zoom ng-href="/UMBC/ServerFiles/uploadimages/{{aD.image_link}}"> 
+                        <img ng-src="/UMBC/ServerFiles/uploadimages/{{aD.image_link}}" class='img-responsive img-rounded' style="border:none; width: 120px; height: 70px;" alt="Responsive image"/>
+                    </a>
+                </td>
     		</tr>
     	</table>
 

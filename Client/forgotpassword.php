@@ -64,28 +64,42 @@ EOF;
   }
 ?>
 
-<div class="container">           
-    <div class="jumbotron" id="background_color">              
-        <h1 class="sign">Barking Bazaar</h1>
-        <br> <br>              
-        <h2 align="center">Enter you email</h2>            
-        <form class="form-horizontal" id="form1" method="post" action="#">
-            <div class="form-group">
-                <!-- <label for="inputEmail3" class="col-sm-offset-2 col-sm-2 control-label">Email</label> -->
-                <div class="col-sm-offset-3 col-sm-6">
-                    <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email">
-                </div>
-            </div>                
-            <div class="form-group">
-                <div class="col-sm-offset-5 col-sm-10">
-                    <button type="submit" class="btn btn-success" name="submit">Send password</button>
-                </div>
-            </div>
-        </form>            
-    </div>
-    
-    
-    <footer class="container-fluid">  
-        &copy;ZAADN LLC. All rights are reserved.
-    </footer>
-</div>    
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+  <div class="container">           
+      <div class="jumbotron" id="background_color">              
+          <h1 class="sign">Barking Bazaar</h1>
+          <br> <br>              
+          <h2 align="center">Enter you email</h2>            
+          <form class="form-horizontal" id="form1" method="post" action="#">
+              <div class="form-group">
+                  <!-- <label for="inputEmail3" class="col-sm-offset-2 col-sm-2 control-label">Email</label> -->
+                  <div class="col-sm-offset-3 col-sm-6">
+                      <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email">
+                  </div>
+              </div>                
+              <div class="form-group">
+                  <div class="col-sm-offset-5 col-sm-10">
+                      <button type="submit" class="btn btn-success" name="submit">Send password</button>
+                  </div>
+              </div>
+          </form>            
+      </div>
+      
+      
+      <footer class="container-fluid">  
+          &copy;ZAADN LLC. All rights are reserved.
+      </footer>
+  </div>    
+
+</body>
+</html>

@@ -43,8 +43,7 @@
     <script src="/UMBC/Client/js/controller/aboutmectrl.js"></script>
     <script src="/UMBC/Client/js/controller/loginctrl.js"></script>
     <script src="/UMBC/Client/js/controller/servicectrl.js"></script>
-    <!-- <script src="/UMBC/Client/js/controller/indexctrl.js"></script> -->
-
+    <script src="/UMBC/Client/js/jqueryeffect.js"></script>
 </head>
 <body>	
 		<nav class="navbar navbar-inverse navbar-fixed-top" role='navigation' id='nav-bar'>
@@ -58,7 +57,7 @@
 			        <span class="icon-bar"></span>
 			       
 			      </button>
-			      <a class="navbar-brand" href="">Barking-Bazaar</a>
+			      <a class="navbar-brand" id="logo" href="#about">Barking-Bazaar</a>
     			</div>
 
     			<!-- Navigation bar -->
@@ -106,6 +105,7 @@
 		
 	<!-- main content -->
 	<div class="container" id="main-body">
+		<!-- main page routing container -->
         <div ng-view></div>
     </div>
 </body>
