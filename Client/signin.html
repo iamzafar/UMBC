@@ -1,0 +1,39 @@
+<!-- This is page is for login, using LoginCtrl -->  
+<div class="jumbotron text-center">
+  <h1 class="sign"> Barking Bazaar</h1> 
+
+  <div align="center" class="jumbotron">
+      
+    <form class="form-inline">
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail3">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" ng-model="userInfo.email">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="exampleInputPassword3">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password" ng-model="userInfo.password">
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+      <button ng-click="userLogin()" type="submit" class="btn btn-success" n>Sign in</button>
+    </form>
+    
+    <div style="margin-top: 20px;">
+      <a href='#signup' ><strong>Don't have account? Sign Up</strong></a>
+      <br>
+      <a href="/UMBC/Client/forgotpassword.php" target="_blank" ng-click="forgotpwd()">Forgot password?</a>
+    </div>
+    
+
+  </div>
+  <img src="/UMBC/Client/images/barter.jpg" alt="Cinque Terre" style="border:none; width: 304px; height: 200px;"> 
+
+</div>
+
+<footer class="container-fluid">  
+  &copy;ZAADN LLC. All rights are reserved.
+</footer>
+

@@ -1,0 +1,46 @@
+<br> <br>
+<div class='container'>
+	<div class="row table-respononsive" ng-controller="HomeCtrl">
+    	<table class="table table-hover" id='ad-section'>  
+    	    <!-- if incomingAds is defined -->
+    	    <tr>
+    	        <a class="set-new-ads" ng-if="incomingAds.length > 0" ng-click="setNewAds()">There are {{difference}} new Post Ads from other users</a> 
+    	    </tr>
+            <!-- all_ads is array of JSON objects, aD is JSON variable -->
+    		<tr class='row' ng-repeat="aD in all_ads | startFrom:currentPage*pageSize | limitTo:pageSize">
+    			<td class='col-md-2'>
+	    			<b>{{aD.title}}</b>
+	    			<!-- no add image yet, using default image -->
+	    			<image ng-src="/UMBC/ServerFiles/uploadimages/{{adimage}}" class='img-responsive img-rounded' style="border:none; width: 100px; height: 80px;" alt="Responsive image"/>
+    			</td>
+
+    			<td>
+    				<strong>{{aD.create_date | date: 'MM/dd/yyyy hh:mm'}}</strong>
+    				<p>{{aD.content}}</p>
+    		    </td>
+    		    <td>
+    		    	<strong>Poster email: </strong>{{aD.email}}
+    		    </td>
+    		</tr>
+    	</table>
+
+        <div align="center">
+            <button type="button" class="btn btn-info" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">Previous</button>
+                 {{currentPage+1}}/{{numberOfPages()}}     
+    
+            <em ng-repeat="p in pageArray" ng-show="pageSize>1">
+                <a href="" ng-click="$parent.currentPage=p">{{p+1}}</a>
+            </em>
+            <a href="" ng-show="pageSize<Object.keys($scope.all_ads).length" ng-click="pageSize=Object.keys($scope.all_ads).length;currentPage=0;">all</a>
+        
+            <a href="" ng-show="pageSize==Object.keys($scope.all_ads).length" ng-click="pageSize=defaultPageSize;currentPage=0;">pagination</a>
+    
+            <button type="button" class="btn btn-info" ng-disabled="currentPage >= Object.keys($scope.all_ads).length/pageSize - 1" ng-click="currentPage=currentPage+1">
+                Next
+            </button>    
+        </div>
+
+        <br><br>
+        
+    </div>
+</div>

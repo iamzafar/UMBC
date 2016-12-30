@@ -1,0 +1,59 @@
+<!-- is using  -->      
+    <div class="container">
+           
+        <div class="jumbotron"> 
+              
+            <h1 class="sign">Barking Bazaar</h1>
+            <br> <br>              
+            <h2 align="center">Register</h2>
+            
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputFName" class="col-sm-offset-2 col-sm-2 control-label">First Name</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" placeholder="Enter first name" ng-model="userInfo.firstname" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputLName" class="col-sm-offset-2 col-sm-2 control-label">Last Name</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" placeholder="Enter last name" ng-model="userInfo.lastname" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-offset-2 col-sm-2 control-label">Email</label>
+                    <div class="col-sm-5">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" ng-model="userInfo.email" required>
+                    </div>
+                </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-offset-2 col-sm-2 control-label">Password</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" ng-model="userInfo.password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-offset-2 col-sm-2 control-label">Re-enter password</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Re-enter Password" ng-model="userInfo.re_pwd" required>
+                    </div>
+                </div>      
+              <div class="form-group">
+                <div class="col-sm-offset-6 col-sm-10">
+                  <button ng-click="userSignup()" type="submit" class="btn btn-success">Register</button>
+                </div>
+              </div>
+            </form>            
+        </div>
+        
+        
+        <footer class="container-fluid">  
+            &copy;ZAADN LLC. All rights are reserved.
+        </footer>
+    </div>
+
+<!--     
+</body>
+</html> -->
